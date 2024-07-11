@@ -44,3 +44,11 @@ class BookListView(generic.ListView):
 
 class BookDetailView(generic.ListView):
     model = Book
+    
+class AuthorListView(generic.ListView):
+    model = Author    
+    
+    def get_context_data(self, **kwargs):
+        context = super(AuthorListView, self).get_context_data(**kwargs)
+        context['some_data'] = 'This just some data'
+        return context
