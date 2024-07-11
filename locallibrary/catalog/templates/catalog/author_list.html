@@ -7,6 +7,7 @@
       {% for author in author_list %}
       <li>
         <a href="">{{ author.first_name }}  {{ author.last_name }}</a>        
+        ({{author.date_of_birth}})
       </li>
       {% endfor %}
     </ul>
