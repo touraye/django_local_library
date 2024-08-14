@@ -1,0 +1,21 @@
+{% extends "register.html" %}
+
+{% block content %}
+  <form action="" method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" placeholder="Enter username">
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="text" placeholder="Enter password">
+    </div>
+    <input type="submit" class="btn btn-default btn-lg" value="Register">
+    <div>
+        <p>
+            <a href="{% url 'register' %}?next={{ request.path }}">Register</a> if you don't have an account
+        </p>
+    </div>
+  </form>
+{% endblock %}
