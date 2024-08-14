@@ -1,0 +1,33 @@
+{% extends "base_register.html" %}
+
+{% block title %}
+    <title>
+        Registration
+    </title>
+{% endblock %}
+
+{% block content %}
+  <h1>Local Library Registration</h1>
+  <p>
+    Welcome to LocalLibrary, a website developed by
+    <em>Mozilla Developer Network</em>!
+  </p> 
+
+   <form action="" method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" placeholder="Enter username">
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="text" placeholder="Enter password">
+    </div>
+    <input type="submit" class="btn btn-default btn-lg" value="Register">
+    <div>
+        <p>
+            <a href="{% url 'register' %}?next={{ request.path }}">Register</a> if you don't have an account
+        </p>
+    </div>
+  </form>
+{% endblock %}
