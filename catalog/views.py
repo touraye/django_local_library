@@ -16,6 +16,15 @@ def index(request):
 
     # Available books (status = 'a')
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
+    
+    # Maintenance books (status = 'm')
+    num_instances_maintenance = BookInstance.objects.filter(status__exact='m').count()
+    
+    # Loaned books (status = 'l')
+    num_instances_loaned = BookInstance.objects.filter(status__exact='o').count()
+    
+    # Borrowed books (status = 'b')
+    num_instances_borrowed = BookInstance.objects.filter(status__exact='b').count()
 
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()
@@ -87,8 +96,13 @@ class LoanedBooksByLibrarianListView(LoginRequiredMixin,PermissionRequiredMixin,
     permission_required = ('catalog.can_mark_returned', 'catalog.change_book')
 
     def get_queryset(self):
-        print('self', self)
+        
         return (
             BookInstance.objects.filter(status__exact='o')
             .order_by('due_back')
-        )            
+        )        
+        
+    def get_available_book(self):
+       return (
+           BookInstance.objects.filter(status__exact='a')
+       )
